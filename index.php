@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Sistem Informasi Tambak Kakap Putih untuk budidaya laut penuh - Panduan lengkap budidaya, monitoring, dan analisis ekonomi">
     <title> Sistem Informasi Tambak Kakap Putih - SI Kakap | Budidaya Laut Penuh</title>
-
+    <link rel="icon" href="assets/images/logoHeader.png" />
     <!-- Font Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <!-- Tailwind CSS -->
@@ -90,9 +90,12 @@
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <img src="assets/images/Logo2.png"
+                    <img src="assets/images/bulat.png"
                     alt="LogoHeader"
-                    class="h-24 max-h-20 w-auto mr-2 transition-transform duration-300 hover:scale-105">
+                    class="h-10 mr-2">
+                    <span class="text-xl font-bold text-blue-600 dark:text-blue-400 flex items-center">
+                         E-TAMBAK
+                    </span>
                 </div>
                 <div class="hidden md:flex space-x-8">
                     <a href="#home" class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Beranda</a>
