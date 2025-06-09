@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="id" class="dark">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Sistem Informasi Tambak Kakap Putih untuk budidaya laut penuh - Panduan lengkap budidaya, monitoring, dan analisis ekonomi">
     <title> Sistem Informasi Tambak Kakap Putih - SI Kakap | Budidaya Laut Penuh</title>
     <link rel="icon" href="assets/images/logoHeader.png" />
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <!-- Font Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <!-- Tailwind CSS -->
@@ -14,23 +19,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- AOS Animation -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
         body {
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
         }
+
         .hero-gradient {
             background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
         }
+
         .card-hover:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
         }
+
         .water-wave {
             position: relative;
             overflow: hidden;
         }
+
         .water-wave::after {
             content: "";
             position: absolute;
@@ -42,32 +52,45 @@
             background-size: cover;
             z-index: 10;
         }
+
         .dark .water-wave::after {
             background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="%231f2937" opacity=".25"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="%231f2937" opacity=".5"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%231f2937"/></svg>');
         }
+
         .fade-in {
             animation: fadeIn 1s ease-in forwards;
         }
+
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
+
         .fade-in-up {
             animation: fadeInUp 0.8s ease-out forwards;
         }
+
         @keyframes fadeInUp {
             0% {
                 opacity: 0;
                 transform: translateY(40px);
             }
+
             100% {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
+
         .nav-link {
             position: relative;
         }
+
         .nav-link::after {
             content: '';
             position: absolute;
@@ -78,8 +101,13 @@
             background-color: #3b82f6;
             transition: width 0.3s ease;
         }
+
         .nav-link:hover::after {
             width: 100%;
+        }
+
+        [x-cloak] {
+            display: none !important;
         }
     </style>
 </head>
@@ -91,10 +119,10 @@
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
                     <img src="assets/images/bulat.png"
-                    alt="LogoHeader"
-                    class="h-10 mr-2">
+                        alt="LogoHeader"
+                        class="h-10 mr-2">
                     <span class="text-xl font-bold text-blue-600 dark:text-blue-400 flex items-center">
-                         E-TAMBAK
+                        E-TAMBAK
                     </span>
                 </div>
                 <div class="hidden md:flex space-x-8">
@@ -124,36 +152,171 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-gradient text-white water-wave">
-        <div class="max-w-6xl mx-auto px-4 py-20 md:py-32">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0 fade-in">
-                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Sistem Informasi Tambak Kakap Putih Di Lokas Riset Budidaya Ikan Laut</h1>
-                    <p class="text-lg md:text-xl mb-6 opacity-90">Optimalisasi budidaya kakap putih (<em>Lates calcarifer</em>) dalam sistem budidaya laut penuh</p>
-                    <div class="flex space-x-4">
-                        <a href="#culture" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition duration-300 shadow-lg">
-                            Kelola Budidaya <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                        <a href="#calculator" class="border border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-blue-600 transition duration-300">
-                            Kalkulator <i class="fas fa-calculator ml-2"></i>
-                        </a>
+    <div x-data="{ open: false }">
+        <!-- Hero Section -->
+        <section id="home" class="hero-gradient text-white water-wave">
+            <div class="max-w-6xl mx-auto px-4 py-20 md:py-32">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-10 md:mb-0 fade-in">
+                        <h1 class="text-4xl md:text-5xl font-bold mb-4">Sistem Informasi Tambak Kakap Putih Di Lokas Riset Budidaya Ikan Laut</h1>
+                        <p class="text-lg md:text-xl mb-6 opacity-90">Optimalisasi budidaya kakap putih (<em>Lates calcarifer</em>) dalam sistem budidaya laut penuh</p>
+                        <div class="flex space-x-4">
+                            <button
+                                @click="open = true"
+                                class="bg-white text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition duration-300 shadow-lg">
+                                Kelola Budidaya <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+
+                            <a href="#calculator" class="border border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-blue-600 transition duration-300">
+                                Kalkulator <i class="fas fa-calculator ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 flex justify-center fade-in-up">
+                        <img src="assets/images/lokasi.png"
+                            alt="Kakap Putih"
+                            class="rounded-xl shadow-2xl max-w-md w-full border-4 border-white">
                     </div>
                 </div>
-                <div class="md:w-1/2 flex justify-center fade-in-up">
-                    <img src="assets/images/lokasi.png" 
-                         alt="Kakap Putih" 
-                         class="rounded-xl shadow-2xl max-w-md w-full border-4 border-white">
-                </div>
+            </div>
+        </section>
+
+        <!-- Modal -->
+        <div
+            x-show="open"
+            x-transition
+            x-cloak
+            class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+            <div
+                @click.away="open = false"
+                class="bg-white text-black rounded-xl p-6 w-full max-w-lg shadow-lg relative">
+                <!-- Tombol Close -->
+                <button
+                    @click="open = false"
+                    class="absolute top-2 right-3 text-gray-500 hover:text-black text-xl font-bold">
+                    &times;
+                </button>
+
+                <!-- Judul Modal -->
+                <h2 class="text-2xl font-semibold text-center text-blue-600 mb-6">Log-in</h2>
+
+                <!-- Form Login -->
+                <form action="auth/proses_login.php" method="POST" class="space-y-5">
+                    <!-- Email -->
+                    <div class="relative">
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <input type="email" id="email" name="email" required
+                                placeholder="contoh@email.com"
+                                class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                        </div>
+                    </div>
+
+                    <!-- Password dengan toggle -->
+                    <div x-data="{ show: false }" class="relative">
+                        <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <input :type="show ? 'text' : 'password'" id="password" name="password" required
+                                placeholder="Masukkan password"
+                                class="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                            <button type="button" @click="show = !show"
+                                class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-700 focus:outline-none">
+                                <i :class="show ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Konfirmasi Password dengan toggle -->
+                    <div x-data="{ show: false }" class="relative">
+                        <label for="confirm_password" class="block text-sm font-medium text-gray-700 mb-1">Konfirmasi Password</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                                <i class="fas fa-check-circle"></i>
+                            </span>
+                            <input :type="show ? 'text' : 'password'" id="confirm_password" name="confirm_password" required
+                                placeholder="Ulangi password"
+                                class="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                            <button type="button" @click="show = !show"
+                                class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-700 focus:outline-none">
+                                <i :class="show ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Kategori Dropdown -->
+                    <div class="relative">
+                        <label for="kategori" class="block text-sm font-medium text-gray-700 mb-1">Kategori</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                                <i class="fas fa-users-cog"></i>
+                            </span>
+                            <select id="kategori" name="kategori" required
+                                class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg shadow-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="" disabled selected>Pilih kategori</option>
+                                <option value="administrator">Administrator</option>
+                                <option value="petugas">Petugas</option>
+                                <option value="teknisi">Teknisi</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit"
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300">
+                            <i class="fas fa-sign-in-alt mr-2"></i>Login
+                        </button>
+                    </div>
+                </form>
+                <?php if (isset($_GET['error'])): ?>
+                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                    <script>
+                        const showError = () => {
+                            <?php if ($_GET['error'] == 'login_gagal'): ?>
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Login Gagal',
+                                    text: 'Email atau password salah!'
+                                });
+                            <?php elseif ($_GET['error'] == 'kategori_salah'): ?>
+                                Swal.fire({
+                                    icon: 'warning',
+                                    title: 'Kategori Salah',
+                                    text: 'Kategori yang Anda pilih tidak sesuai!'
+                                });
+                            <?php elseif ($_GET['error'] == 'kategori_tidak_dikenal'): ?>
+                                Swal.fire({
+                                    icon: 'question',
+                                    title: 'Kategori Tidak Dikenal',
+                                    text: 'Mohon hubungi admin sistem.'
+                                });
+                            <?php endif; ?>
+                        };
+
+                        // Tampilkan SweetAlert lalu hilangkan ?error=... dari URL
+                        showError();
+                        if (window.history.replaceState) {
+                            const cleanUrl = window.location.origin + window.location.pathname;
+                            window.history.replaceState(null, null, cleanUrl);
+                        }
+                    </script>
+                <?php endif; ?>
+
+
+
             </div>
         </div>
-    </section>
+    </div>
+
 
     <!-- About Section -->
     <section id="about" class="py-16 bg-white dark:bg-gray-800">
         <div class="max-w-6xl mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12 text-blue-600 dark:text-blue-400">Tentang Kakap Putih</h2>
-            
+
             <div class="grid md:grid-cols-2 gap-10 items-center mb-16">
                 <div class="fade-in-up">
                     <h3 class="text-2xl font-semibold mb-4">🐟 Profil Kakap Putih (<em>Lates calcarifer</em>)</h3>
@@ -222,14 +385,14 @@
     <section id="culture" class="py-16 bg-gray-50 dark:bg-gray-900">
         <div class="max-w-6xl mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12 text-blue-600 dark:text-blue-400">Teknik Budidaya Laut Penuh</h2>
-            
+
             <div class="mb-16">
                 <h3 class="text-2xl font-semibold mb-6 text-center">📌 Tahapan Budidaya Kakap Putih di KJA</h3>
-                
+
                 <div class="relative">
                     <!-- Timeline line -->
                     <div class="hidden md:block absolute left-1/2 h-full w-1 bg-blue-200 dark:bg-blue-900 transform -translate-x-1/2"></div>
-                    
+
                     <!-- Timeline items -->
                     <div class="space-y-12">
                         <!-- Item 1 -->
@@ -265,7 +428,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- Item 2 -->
                         <div class="relative flex flex-col md:flex-row items-center">
                             <div class="md:w-1/2 md:pr-12 mb-6 md:mb-0 order-2 md:order-1 md:text-left">
@@ -303,7 +466,7 @@
                                 </p>
                             </div>
                         </div>
-                        
+
                         <!-- Item 3 -->
                         <div class="relative flex flex-col md:flex-row items-center">
                             <div class="md:w-1/2 md:pr-12 mb-6 md:mb-0 md:text-right">
@@ -343,7 +506,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- Item 4 -->
                         <div class="relative flex flex-col md:flex-row items-center">
                             <div class="md:w-1/2 md:pr-12 mb-6 md:mb-0 order-2 md:order-1 md:text-left">
@@ -377,7 +540,7 @@
                                 </p>
                             </div>
                         </div>
-                        
+
                         <!-- Item 5 -->
                         <div class="relative flex flex-col md:flex-row items-center">
                             <div class="md:w-1/2 md:pr-12 mb-6 md:mb-0 md:text-right">
@@ -438,86 +601,87 @@
                                 </div>
                                 <div class="bg-yellow-50 dark:bg-yellow-900/30 p-2 rounded text-center">
                                     <div>Amonia</div>
-                                    <div class="font-bold"><0.1 ppm</div>
+                                    <div class="font-bold">
+                                        <0.1 ppm</div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div>
-                            <h4 class="font-medium mb-2">Frekuensi Pengecekan</h4>
-                            <ul class="text-sm space-y-2 text-gray-600 dark:text-gray-300">
-                                <li class="flex items-center">
-                                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                    <span>Harian: Suhu, DO, pH (pagi dan sore)</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                    <span>Mingguan: Amonia, Nitrit, Alkalinitas</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                    <span>Bulanan: Logam berat (jika dekat industri)</span>
-                                </li>
-                            </ul>
+                            <div>
+                                <h4 class="font-medium mb-2">Frekuensi Pengecekan</h4>
+                                <ul class="text-sm space-y-2 text-gray-600 dark:text-gray-300">
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        <span>Harian: Suhu, DO, pH (pagi dan sore)</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        <span>Mingguan: Amonia, Nitrit, Alkalinitas</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        <span>Bulanan: Logam berat (jika dekat industri)</span>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
-                    <h3 class="text-xl font-semibold mb-4 flex items-center">
-                        <i class="fas fa-chart-pie text-green-500 mr-3"></i> Analisis Biaya Produksi
-                    </h3>
-                    <div class="space-y-4">
-                        <div>
-                            <h4 class="font-medium mb-2">Komponen Biaya (per siklus 8 bulan)</h4>
-                            <div class="text-sm space-y-2 text-gray-600 dark:text-gray-300">
-                                <div class="flex justify-between">
-                                    <span>Benih (1000 ekor)</span>
-                                    <span class="font-medium">Rp 3.000.000</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span>Pakan (1.8 FCR)</span>
-                                    <span class="font-medium">Rp 12.000.000</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span>Tenaga Kerja</span>
-                                    <span class="font-medium">Rp 4.000.000</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span>Pemeliharaan KJA</span>
-                                    <span class="font-medium">Rp 2.000.000</span>
-                                </div>
-                                <div class="border-t border-gray-200 dark:border-gray-700 pt-2 mt-2 font-semibold flex justify-between">
-                                    <span>Total Biaya</span>
-                                    <span>Rp 21.000.000</span>
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-4 flex items-center">
+                            <i class="fas fa-chart-pie text-green-500 mr-3"></i> Analisis Biaya Produksi
+                        </h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-medium mb-2">Komponen Biaya (per siklus 8 bulan)</h4>
+                                <div class="text-sm space-y-2 text-gray-600 dark:text-gray-300">
+                                    <div class="flex justify-between">
+                                        <span>Benih (1000 ekor)</span>
+                                        <span class="font-medium">Rp 3.000.000</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Pakan (1.8 FCR)</span>
+                                        <span class="font-medium">Rp 12.000.000</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Tenaga Kerja</span>
+                                        <span class="font-medium">Rp 4.000.000</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Pemeliharaan KJA</span>
+                                        <span class="font-medium">Rp 2.000.000</span>
+                                    </div>
+                                    <div class="border-t border-gray-200 dark:border-gray-700 pt-2 mt-2 font-semibold flex justify-between">
+                                        <span>Total Biaya</span>
+                                        <span>Rp 21.000.000</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div>
-                            <h4 class="font-medium mb-2">Estimasi Pendapatan</h4>
-                            <div class="text-sm text-gray-600 dark:text-gray-300">
-                                <div class="flex justify-between">
-                                    <span>Produksi (700kg @Rp 60.000)</span>
-                                    <span class="font-medium">Rp 42.000.000</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span>Keuntungan Bersih</span>
-                                    <span class="font-medium text-green-600 dark:text-green-400">Rp 21.000.000</span>
-                                </div>
-                                <div class="text-xs mt-2 text-gray-500 dark:text-gray-400">
-                                    *Perhitungan untuk 1 unit KJA ukuran 5x5x3m
+                            <div>
+                                <h4 class="font-medium mb-2">Estimasi Pendapatan</h4>
+                                <div class="text-sm text-gray-600 dark:text-gray-300">
+                                    <div class="flex justify-between">
+                                        <span>Produksi (700kg @Rp 60.000)</span>
+                                        <span class="font-medium">Rp 42.000.000</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Keuntungan Bersih</span>
+                                        <span class="font-medium text-green-600 dark:text-green-400">Rp 21.000.000</span>
+                                    </div>
+                                    <div class="text-xs mt-2 text-gray-500 dark:text-gray-400">
+                                        *Perhitungan untuk 1 unit KJA ukuran 5x5x3m
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
     <!-- Monitoring Section -->
     <section id="monitoring" class="py-16 bg-white dark:bg-gray-800">
         <div class="max-w-6xl mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12 text-blue-600 dark:text-blue-400">Sistem Monitoring Digital</h2>
-            
+
             <div class="grid md:grid-cols-2 gap-10 items-center mb-16">
                 <div class="fade-in-up">
                     <h3 class="text-2xl font-semibold mb-4">📊 Real-time Water Quality Monitoring</h3>
@@ -609,7 +773,7 @@
     <section id="calculator" class="py-16 bg-gray-50 dark:bg-gray-900">
         <div class="max-w-6xl mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12 text-blue-600 dark:text-blue-400">Kalkulator Budidaya</h2>
-            
+
             <div class="grid md:grid-cols-2 gap-10">
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md fade-in-up">
                     <h3 class="text-xl font-semibold mb-4 flex items-center">
@@ -645,7 +809,7 @@
                         </button>
                     </form>
                 </div>
-                
+
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md fade-in-up">
                     <h3 class="text-xl font-semibold mb-4 flex items-center">
                         <i class="fas fa-chart-bar text-blue-500 mr-3"></i> Hasil Perhitungan
@@ -656,7 +820,7 @@
                             <p>Masukkan parameter budidaya untuk melihat perhitungan biaya dan potensi keuntungan</p>
                         </div>
                     </div>
-                    
+
                     <div class="mt-8">
                         <h4 class="font-semibold mb-3">Estimasi Harga Jual</h4>
                         <div class="grid grid-cols-3 gap-2 text-sm">
@@ -679,7 +843,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="mt-16">
                 <h3 class="text-2xl font-semibold mb-6 text-center">📈 Grafik Pertumbuhan Kakap Putih</h3>
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
@@ -698,7 +862,7 @@
     <section class="py-16 bg-white dark:bg-gray-800">
         <div class="max-w-3xl mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12 text-blue-600 dark:text-blue-400">Pertanyaan Umum</h2>
-            
+
             <div class="space-y-4">
                 <div class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
                     <button class="faq-question w-full flex justify-between items-center p-4 text-left font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition duration-200">
@@ -715,7 +879,7 @@
                         <p class="mt-2">Rata-rata waktu yang dibutuhkan untuk mencapai ukuran pasar (500-700g) adalah 6-8 bulan di KJA laut.</p>
                     </div>
                 </div>
-                
+
                 <div class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
                     <button class="faq-question w-full flex justify-between items-center p-4 text-left font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition duration-200">
                         <span>Bagaimana cara mengatasi serangan penyakit pada kakap putih?</span>
@@ -742,7 +906,7 @@
                         <p class="mt-2">Selalu konsultasikan dengan ahli penyakit ikan sebelum melakukan pengobatan.</p>
                     </div>
                 </div>
-                
+
                 <div class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
                     <button class="faq-question w-full flex justify-between items-center p-4 text-left font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition duration-200">
                         <span>Apakah budidaya kakap putih cocok untuk pemula?</span>
@@ -760,7 +924,7 @@
                         <p class="mt-2">Dengan persiapan yang baik dan bimbingan dari ahli, pemula bisa sukses dalam budidaya kakap putih.</p>
                     </div>
                 </div>
-                
+
                 <div class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
                     <button class="faq-question w-full flex justify-between items-center p-4 text-left font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition duration-200">
                         <span>Bagaimana prospek pasar kakap putih ke depan?</span>
@@ -857,12 +1021,12 @@
         // Dark mode toggle
         const themeToggle = document.getElementById('theme-toggle');
         const html = document.documentElement;
-        
+
         // Check for saved user preference or use OS preference
         const userTheme = localStorage.getItem('theme');
         const osTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         const initialTheme = userTheme || osTheme;
-        
+
         if (initialTheme === 'dark') {
             html.classList.add('dark');
             themeToggle.innerHTML = '<i class="fas fa-sun text-yellow-300"></i>';
@@ -870,37 +1034,37 @@
             html.classList.remove('dark');
             themeToggle.innerHTML = '<i class="fas fa-moon text-gray-700"></i>';
         }
-        
+
         themeToggle.addEventListener('click', () => {
             html.classList.toggle('dark');
             const isDark = html.classList.contains('dark');
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            themeToggle.innerHTML = isDark 
-                ? '<i class="fas fa-sun text-yellow-300"></i>' 
-                : '<i class="fas fa-moon text-gray-700"></i>';
+            themeToggle.innerHTML = isDark ?
+                '<i class="fas fa-sun text-yellow-300"></i>' :
+                '<i class="fas fa-moon text-gray-700"></i>';
         });
-        
+
         // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-        
+
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
-        
+
         // FAQ accordion
         const faqQuestions = document.querySelectorAll('.faq-question');
         faqQuestions.forEach(question => {
             question.addEventListener('click', () => {
                 const answer = question.nextElementSibling;
                 const icon = question.querySelector('i');
-                
+
                 answer.classList.toggle('hidden');
                 icon.classList.toggle('transform');
                 icon.classList.toggle('rotate-180');
             });
         });
-        
+
         // Growth chart
         const ctx = document.getElementById('growthChart').getContext('2d');
         const growthChart = new Chart(ctx, {
@@ -948,7 +1112,7 @@
                 }
             }
         });
-        
+
         // Cost calculator
         function calculateCost() {
             const pondSize = parseFloat(document.getElementById('pond-size').value);
@@ -957,33 +1121,33 @@
             const fcr = parseFloat(document.getElementById('fcr').value);
             const feedPrice = parseFloat(document.getElementById('feed-price').value);
             const culturePeriod = parseFloat(document.getElementById('culture-period').value);
-            
+
             // Calculations
             const totalFish = pondSize * fishDensity;
             const seedCost = totalFish * seedPrice;
-            
+
             // Assuming average harvest weight of 600g (0.6kg) per fish
             const totalBiomass = totalFish * 0.6;
             const totalFeed = totalBiomass * fcr;
             const feedCost = totalFeed * feedPrice;
-            
+
             // Other costs estimation (20% of feed cost)
             const otherCosts = feedCost * 0.2;
-            
+
             // Total cost
             const totalCost = seedCost + feedCost + otherCosts;
-            
+
             // Revenue (assuming 80% survival rate and price of Rp 60,000 per kg)
             const harvestFish = totalFish * 0.8;
             const harvestBiomass = harvestFish * 0.6;
             const revenue = harvestBiomass * 60000;
-            
+
             // Profit
             const profit = revenue - totalCost;
-            
+
             // ROI
             const roi = (profit / totalCost) * 100;
-            
+
             // Display results
             const resultHTML = `
                 <div class="space-y-3">
@@ -1022,9 +1186,10 @@
                     </div>
                 </div>
             `;
-            
+
             document.getElementById('calculation-result').innerHTML = resultHTML;
         }
     </script>
 </body>
+
 </html>
