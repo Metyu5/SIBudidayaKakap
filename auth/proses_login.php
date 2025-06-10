@@ -17,11 +17,13 @@ if ($user && $password === $user['password']) {
         $_SESSION['kategori'] = $user['kategori'];
 
         if ($user['kategori'] === 'administrator') {
-            $_SESSION['success'] = "Selamat datang, " . $user['nama'] . "!";
+            $_SESSION['success'] = "Welcome Back, " . $user['nama'] ;
             header("Location: ../admin/dashboard.php");
         } elseif ($user['kategori'] === 'petugas') {
+            $_SESSION['success'] = "Welcome Back, " . $user['nama'];
             header("Location: ../petugas/dashboard.php");
         } elseif ($user['kategori'] === 'teknisi') {
+            $_SESSION['success'] = "Welcome Back, " . $user['nama'];
             header("Location: ../teknisi/dashboard.php");
         } else {
             header("Location: ../index.php?error=kategori_tidak_dikenal");
