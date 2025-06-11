@@ -6,7 +6,7 @@ $password = $_POST['password'];
 $kategori_form = $_POST['kategori'];
 
 $query = "SELECT * FROM users WHERE email='$email' LIMIT 1";
-$result = mysqli_query($conn, $query);
+$result = mysqli_query($koneksi, $query);
 $user = mysqli_fetch_assoc($result);
 
 if ($user && $password === $user['password']) {

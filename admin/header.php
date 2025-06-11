@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard - Admin</title>
-    <link rel="icon" href="assets/images/logoHeader.png" />
+    <link rel="icon" href="../assets/images/logoHeader.png" />
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <!-- Tailwind -->

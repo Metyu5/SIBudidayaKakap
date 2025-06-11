@@ -24,7 +24,7 @@
              </button>
              <div class="relative" x-data="{ open: false }">
                  <button @click="open = !open" class="flex items-center space-x-2">
-                     <img src="https://picsum.photos/100" alt="Admin" class="h-8 w-8 rounded-full">
+                     <img src="../assets/images/settings.png" alt="Admin" class="h-8 w-8 rounded-full">
                      <span class="hidden md:inline text-sm font-medium">Admin</span>
                  </button>
                  <div x-show="open" @click.outside="open = false" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20">
