@@ -58,7 +58,7 @@ function isDropdownOpen($pages = [])
                         <i class="fas fa-user mr-2 w-4 text-blue-300"></i> Pengguna
                     </a>
                     <a href="dashboard.php?page=bibit" class="flex items-center px-3 py-2 text-sm rounded-lg <?= activeMenu('bibit') ?>">
-                        <i class="fas fa-seedling mr-2 w-4 text-blue-300"></i> Bibit
+                        <i class="fas fa-leaf mr-2 w-4 text-blue-300"></i> Bibit Ikan
                     </a>
                     <a href="dashboard.php?page=pakan" class="flex items-center px-3 py-2 text-sm rounded-lg <?= activeMenu('pakan') ?>">
                         <i class="fas fa-fish mr-2 w-4 text-blue-300"></i> Pakan
@@ -70,7 +70,7 @@ function isDropdownOpen($pages = [])
             </div>
 
             <!-- Water Quality -->
-            <div x-data="{ open: <?= var_export(isDropdownOpen(['temperature', 'ph', 'oxygen', 'salinity']), true) ?> }">
+            <!-- <div x-data="{ open: <?= var_export(isDropdownOpen(['temperature', 'ph', 'oxygen', 'salinity']), true) ?> }">
                 <button @click="open = !open"
                     class="flex items-center justify-between w-full px-4 py-3 text-sm font-medium rounded-lg hover:bg-blue-700 text-white sidebar-item">
                     <div class="flex items-center">
@@ -86,10 +86,10 @@ function isDropdownOpen($pages = [])
                     <a href="dashboard.php?page=oxygen" class="block px-3 py-2 text-sm rounded-lg <?= activeMenu('oxygen') ?>">Oxygen Levels</a>
                     <a href="dashboard.php?page=salinity" class="block px-3 py-2 text-sm rounded-lg <?= activeMenu('salinity') ?>">Salinity</a>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Seaweed Integration -->
-            <div x-data="{ open: <?= var_export(isDropdownOpen(['symbiotic', 'growth', 'nutrient']), true) ?> }">
+            <!-- <div x-data="{ open: <?= var_export(isDropdownOpen(['symbiotic', 'growth', 'nutrient']), true) ?> }">
                 <button @click="open = !open"
                     class="flex items-center justify-between w-full px-4 py-3 text-sm font-medium rounded-lg hover:bg-blue-700 text-white sidebar-item">
                     <div class="flex items-center">
@@ -104,16 +104,9 @@ function isDropdownOpen($pages = [])
                     <a href="dashboard.php?page=growth" class="block px-3 py-2 text-sm rounded-lg <?= activeMenu('growth') ?>">Growth Comparison</a>
                     <a href="dashboard.php?page=nutrient" class="block px-3 py-2 text-sm rounded-lg <?= activeMenu('nutrient') ?>">Nutrient Exchange</a>
                 </div>
-            </div>
-
-            <!-- Reports -->
-            <a href="dashboard.php?page=reports" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg sidebar-item <?= activeMenu('reports') ?>">
-                <i class="fas fa-chart-bar mr-3 text-blue-300"></i>
-                <span class="sidebar-item-text">Reports & Analytics</span>
-            </a>
-
+            </div> -->
             <!-- Settings -->
-            <div x-data="{ open: <?= var_export(isDropdownOpen(['user_settings', 'system_config', 'notifications']), true) ?> }">
+            <!-- <div x-data="{ open: <?= var_export(isDropdownOpen(['user_settings', 'system_config', 'notifications']), true) ?> }">
                 <button @click="open = !open"
                     class="flex items-center justify-between w-full px-4 py-3 text-sm font-medium rounded-lg hover:bg-blue-700 text-white sidebar-item">
                     <div class="flex items-center">
@@ -128,7 +121,7 @@ function isDropdownOpen($pages = [])
                     <a href="dashboard.php?page=system_config" class="block px-3 py-2 text-sm rounded-lg <?= activeMenu('system_config') ?>">System Configuration</a>
                     <a href="dashboard.php?page=notifications" class="block px-3 py-2 text-sm rounded-lg <?= activeMenu('notifications') ?>">Notification Settings</a>
                 </div>
-            </div>
+            </div> -->
         </nav>
     </div>
 </aside>

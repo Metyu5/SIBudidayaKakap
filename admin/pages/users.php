@@ -1,6 +1,24 @@
 <?php
 include_once __DIR__ . '/../../config/koneksi.php';
 
+// Cek apakah ada permintaan hapus pengguna
+if (isset($_POST['delete_id'])) {
+  $id = intval($_POST['delete_id']);
+  $query_delete = mysqli_query($koneksi, "DELETE FROM users WHERE usersId='$id'");
+  if ($query_delete) {
+    echo "<script>
+      const notyf = new Notyf({ duration: 3000, position: { x: 'right', y: 'bottom' } });
+      notyf.success('Pengguna berhasil dihapus!');
+      setTimeout(() => { window.location.href = ''; }, 1500);
+    </script>";
+  } else {
+    echo "<script>
+      const notyf = new Notyf({ duration: 3000, position: { x: 'right', y: 'top' } });
+      notyf.error('Gagal menghapus pengguna!');
+    </script>";
+  }
+}
+
 
 // Cek apakah form update dikirim
 if (isset($_POST['update_id'])) {
@@ -84,6 +102,7 @@ $no = 1;
           <h1 class="text-2xl font-bold text-gray-900">Manajemen Pengguna</h1>
           <p class="text-gray-500 mt-2">Manage system user accounts and permissions</p>
         </div>
+        
         <button
           @click="showModal = true"
           class="bg-indigo-600 hover:bg-indigo-700 active:scale-95 active:shadow-inner text-white text-sm font-medium px-2 py-2.5 rounded-md shadow-md flex items-center transition-all duration-150 ease-in-out">
@@ -145,10 +164,14 @@ $no = 1;
                       @click="editUser = <?= htmlspecialchars(json_encode($row)) ?>; showEditModal = true">
                       <i class="fas fa-edit"></i>
                     </button>
-
-                    <a href="" class="text-red-600 hover:text-red-900 p-2 rounded bg-red-500/10 hover:bg-red-500/20" title="Hapus" onclick="return confirm('Yakin ingin menghapus?')">
-                      <i class="fas fa-trash-alt"></i>
-                    </a>
+                    <form action="" method="POST" class="inline-block" onsubmit="return confirm('Yakin ingin menghapus pengguna ini?')">
+                      <input type="hidden" name="delete_id" value="<?= $row['usersId']; ?>">
+                      <button type="submit"
+                        class="text-red-600 hover:text-red-900 p-2 rounded bg-red-500/10 hover:bg-red-500/20"
+                        title="Hapus">
+                        <i class="fas fa-trash-alt"></i>
+                      </button>
+                    </form>
                   </td>
                 </tr>
               <?php endwhile; ?>
@@ -201,22 +224,47 @@ $no = 1;
           </div>
 
           <!-- Password -->
-          <div class="relative">
+          <div x-data="{ show: false }" class="relative">
             <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
             <i class="fas fa-lock absolute left-3 mt-3 text-gray-400"></i>
-            <input id="password" name="password" type="password" required placeholder="Masukan Password..."
-              class="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-300 rounded-lg text-gray-800 text-sm
-                   focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400" />
+            <input
+              id="password"
+              name="password"
+              :type="show ? 'text' : 'password'"
+              required
+              placeholder="Masukan Password..."
+              class="w-full pl-10 pr-10 py-2 bg-gray-50 border border-gray-300 rounded-lg text-gray-800 text-sm
+           focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400" />
+            <!-- Toggle button -->
+            <button
+              type="button"
+              @click="show = !show"
+              class="absolute flex items-center inset-y-0 right-3 mt-5   text-gray-400 focus:outline-none">
+              <i :class="show ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+            </button>
           </div>
 
           <!-- Konfirmasi Password -->
-          <div class="relative">
+          <div x-data="{ show: false }" class="relative mt-4">
             <label for="password_confirm" class="block text-sm font-medium text-gray-700 mb-1">Konfirmasi Password</label>
             <i class="fas fa-lock absolute left-3 mt-3 text-gray-400"></i>
-            <input id="password_confirm" name="password_confirm" type="password" required placeholder="Ulangi Password..."
-              class="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-300 rounded-lg text-gray-800 text-sm
-                   focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400" />
+            <input
+              id="password_confirm"
+              name="password_confirm"
+              :type="show ? 'text' : 'password'"
+              required
+              placeholder="Ulangi Password..."
+              class="w-full pl-10 pr-10 py-2 bg-gray-50 border border-gray-300 rounded-lg text-gray-800 text-sm
+           focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400" />
+            <!-- Toggle button -->
+            <button
+              type="button"
+              @click="show = !show"
+              class="absolute flex items-center inset-y-0 right-3 mt-5  text-gray-400 focus:outline-none">
+              <i :class="show ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+            </button>
           </div>
+
 
           <!-- Kategori -->
           <div class="relative">
