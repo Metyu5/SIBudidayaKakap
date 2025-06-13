@@ -64,7 +64,7 @@ function isDropdownOpen($pages = [])
                         <i class="fas fa-fish mr-2 w-4 text-blue-300"></i> Pakan
                     </a>
                     <a href="dashboard.php?page=kolam" class="flex items-center px-3 py-2 text-sm rounded-lg <?= activeMenu('kolam') ?>">
-                        <i class="fas fa-water mr-2 w-4 text-blue-300"></i> Kolam
+                        <i class="fas fa-water mr-2 w-4 text-blue-300"></i> Tambak
                     </a>
                 </div>
             </div>

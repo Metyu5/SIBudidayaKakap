@@ -259,7 +259,7 @@
                                 class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg shadow-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
                                 <option value="" disabled selected>Pilih kategori</option>
                                 <option value="administrator">Administrator</option>
-                                <option value="petugas">Petugas</option>
+                                <option value="pimpinan">Pimpinan</option>
                                 <option value="teknisi">Teknisi</option>
                             </select>
                         </div>

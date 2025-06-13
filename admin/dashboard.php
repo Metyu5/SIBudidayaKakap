@@ -9,15 +9,11 @@
             @click="closeSidebar()"
             class="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden">
         </div>
-
         <?php include 'sidebar.php'; ?>
-
         <!-- Main Content -->
         <div class="flex-1 flex flex-col overflow-hidden main-content"
             :class="{ 'lg:ml-64': !isSidebarCollapsed && isSidebarOpen, 'lg:ml-20': isSidebarCollapsed && isSidebarOpen }">
-
             <?php include 'topnav.php'; ?>
-
             <main class="p-4 overflow-y-auto">
                 <?php
                 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
@@ -31,10 +27,8 @@
             </main>
         </div>
     </div>
-
     <!-- JS Custom -->
     <script src="assets/js/dashboard.js"></script>
-
     <!-- PHP untuk notifikasi sukses -->
     <?php if (isset($_SESSION['success'])): ?>
         <script>
