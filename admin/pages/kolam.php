@@ -37,13 +37,13 @@ if (isset($_POST['hapus_kolam'])) {
     if ($stmt->execute()) {
         echo "<script>
             const notyf = new Notyf({ duration: 3000, position: { x: 'right', y: 'bottom' } });
-            notyf.success('Data kolam berhasil dihapus!');
+            notyf.success('Data tambak berhasil dihapus!');
             setTimeout(() => { window.location.href = ''; }, 1500);
         </script>";
     } else {
         echo "<script>
             const notyf = new Notyf({ duration: 3000, position: { x: 'right', y: 'top' } });
-            notyf.error('Gagal menghapus data kolam: " . addslashes($stmt->error) . "');
+            notyf.error('Gagal menghapus data tambak: " . addslashes($stmt->error) . "');
         </script>";
     }
     $stmt->close();
@@ -68,13 +68,13 @@ if (isset($_POST['edit_kolam'])) {
     if ($stmt->execute()) {
         echo "<script>
             const notyf = new Notyf({ duration: 3000, position: { x: 'right', y: 'bottom' } });
-            notyf.success('Data kolam berhasil diperbarui!');
+            notyf.success('Data tambak berhasil diperbarui!');
             setTimeout(() => { window.location.href = ''; }, 1500);
         </script>";
     } else {
         echo "<script>
             const notyf = new Notyf({ duration: 3000, position: { x: 'right', y: 'top' } });
-            notyf.error('Gagal memperbarui data kolam: " . addslashes($stmt->error) . "');
+            notyf.error('Gagal memperbarui data tambak: " . addslashes($stmt->error) . "');
         </script>";
     }
     $stmt->close();
@@ -98,13 +98,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tambah_kolam'])) {
     if ($stmt->execute()) {
         echo "<script>
             const notyf = new Notyf({ duration: 3000, position: { x: 'right', y: 'bottom' } });
-            notyf.success('Data kolam berhasil ditambahkan!');
+            notyf.success('Data tambak berhasil ditambahkan!');
             setTimeout(() => { window.location.href = ''; }, 1500);
         </script>";
     } else {
         echo "<script>
             const notyf = new Notyf({ duration: 3000, position: { x: 'right', y: 'top' } });
-            notyf.error('Gagal menambahkan data kolam: " . addslashes($stmt->error) . "');
+            notyf.error('Gagal menambahkan data tambak: " . addslashes($stmt->error) . "');
         </script>";
     }
     $stmt->close();
@@ -189,8 +189,6 @@ $no = 1; // Inisialisasi nomor untuk tabel
                             <th class="px-6 py-3">Kode Tambak</th>
                             <th class="px-6 py-3">Luas (m²)</th>
                             <th class="px-6 py-3">Kapasitas Ikan</th>
-                            <th class="px-6 py-3">Bibit</th>
-                            <th class="px-6 py-3">Teknisi</th>
                             <th class="px-6 py-3">Status</th>
                             <th class="px-6 py-3 text-right">Aksi</th>
                         </tr>
@@ -213,10 +211,9 @@ $no = 1; // Inisialisasi nomor untuk tabel
                                     </td>
                                     <td class="px-6 py-4 text-sm text-gray-500"><?= htmlspecialchars($row['luas_m2']) ?></td>
                                     <td class="px-6 py-4 text-sm text-gray-500"><?= htmlspecialchars($row['kapasitas_ikan']) ?></td>
-                                    <td class="px-6 py-4 text-sm text-gray-500"><?= htmlspecialchars($row['nama_bibit'] ?? 'N/A') ?></td>
-                                    <td class="px-6 py-4 text-sm text-gray-500"><?= htmlspecialchars($row['nama_teknisi'] ?? 'N/A') ?></td>
+
                                     <td class="px-6 py-4 text-sm">
-                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full <?= ($row['status'] == 'Aktif') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' ?>">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full <?= ($row['status'] == 'Siap') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' ?>">
                                             <?= htmlspecialchars($row['status']) ?>
                                         </span>
                                     </td>
@@ -276,8 +273,6 @@ $no = 1; // Inisialisasi nomor untuk tabel
                         <input type="text" id="add_kode_tambak" name="kode_tambak" value="<?= $kode_baru ?>" readonly
                             class="w-full bg-gray-100 border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none" />
                     </div>
-
-
                     <div>
                         <label for="add_nama_tambak" class="block text-sm font-medium text-gray-700 mb-1">Nama Kolam</label>
                         <input type="text" id="add_nama_tambak" name="nama_tambak" required
@@ -306,34 +301,8 @@ $no = 1; // Inisialisasi nomor untuk tabel
                         <label for="add_status" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
                         <select id="add_status" name="status"
                             class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                            <option value="Aktif">Aktif</option>
-                            <option value="Tidak Aktif">Tidak Aktif</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label for="add_id_bibit" class="block text-sm font-medium text-gray-700 mb-1">Bibit Ikan</label>
-                        <select id="add_id_bibit" name="id_bibit"
-                            class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                            <option value="">-- Pilih Bibit --</option>
-                            <?php foreach ($bibit_options as $bibit): ?>
-                                <option value="<?= htmlspecialchars($bibit['id_bibit']) ?>">
-                                    <?= htmlspecialchars($bibit['nama_bibit']) ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label for="add_id_teknisi" class="block text-sm font-medium text-gray-700 mb-1">Teknisi</label>
-                        <select id="add_id_teknisi" name="id_teknisi"
-                            class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                            <option value="">-- Pilih Teknisi --</option>
-                            <?php foreach ($teknisi_options as $teknisi): ?>
-                                <option value="<?= htmlspecialchars($teknisi['usersId']) ?>">
-                                    <?= htmlspecialchars($teknisi['nama']) ?>
-                                </option>
-                            <?php endforeach; ?>
+                            <option value="Siap">Siap</option>
+                            <option value="Beroperasi">Beroperasi</option>
                         </select>
                     </div>
                 </div>
@@ -375,98 +344,84 @@ $no = 1; // Inisialisasi nomor untuk tabel
                 </div>
             </div>
 
-            <form action="" method="POST" class="p-6 space-y-4">
+            <form action="" method="POST" class="px-6 py-6 space-y-6">
                 <input type="hidden" name="edit_kolam" value="1">
                 <input type="hidden" name="id_tambak" :value="editKolam.id_tambak">
 
+                <!-- Form Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Input Kode Kolam -->
                     <div>
                         <label for="edit_kode_tambak" class="block text-sm font-medium text-gray-700 mb-1">Kode Kolam</label>
                         <input type="text" id="edit_kode_tambak" name="kode_tambak" required
-                            class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                             :value="editKolam.kode_tambak" />
                     </div>
+
+                    <!-- Input Nama Kolam -->
                     <div>
                         <label for="edit_nama_tambak" class="block text-sm font-medium text-gray-700 mb-1">Nama Kolam</label>
                         <input type="text" id="edit_nama_tambak" name="nama_tambak" required
-                            class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                             :value="editKolam.nama_tambak" />
                     </div>
+
+                    <!-- Input Luas -->
                     <div>
                         <label for="edit_luas_m2" class="block text-sm font-medium text-gray-700 mb-1">Luas (m²)</label>
                         <input type="number" step="0.01" id="edit_luas_m2" name="luas_m2"
-                            class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                             :value="editKolam.luas_m2" />
                     </div>
+
+                    <!-- Input Kapasitas Ikan -->
                     <div>
                         <label for="edit_kapasitas_ikan" class="block text-sm font-medium text-gray-700 mb-1">Kapasitas Ikan</label>
                         <input type="number" id="edit_kapasitas_ikan" name="kapasitas_ikan"
-                            class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                             :value="editKolam.kapasitas_ikan" />
                     </div>
+
+                    <!-- Input Tanggal Mulai -->
                     <div>
                         <label for="edit_tanggal_mulai" class="block text-sm font-medium text-gray-700 mb-1">Tanggal Mulai</label>
                         <input type="date" id="edit_tanggal_mulai" name="tanggal_mulai"
-                            class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                             :value="editKolam.tanggal_mulai" />
                     </div>
+
+                    <!-- Input Status -->
                     <div>
                         <label for="edit_status" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
                         <select id="edit_status" name="status"
-                            class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                            <option value="Aktif" :selected="editKolam.status == 'Aktif'">Aktif</option>
-                            <option value="Tidak Aktif" :selected="editKolam.status == 'Tidak Aktif'">Tidak Aktif</option>
+                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <option value="Siap" :selected="editKolam.status == 'Siap'">Siap</option>
+                            <option value="Beroperasi" :selected="editKolam.status == 'Beroperasi'">Beroperasi</option>
                         </select>
                     </div>
-                    <div>
-                        <label for="edit_id_bibit" class="block text-sm font-medium text-gray-700 mb-1">Bibit Ikan</label>
-                        <select id="edit_id_bibit" name="id_bibit"
-                            class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                            <option value="">-- Pilih Bibit --</option>
-                            <?php foreach ($bibit_options as $bibit): ?>
-                                <option value="<?= htmlspecialchars($bibit['id_bibit']) ?>"
-                                    :selected="editKolam.id_bibit == <?= htmlspecialchars($bibit['id_bibit']) ?>">
-                                    <?= htmlspecialchars($bibit['nama_bibit']) ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="edit_id_teknisi" class="block text-sm font-medium text-gray-700 mb-1">Teknisi</label>
-                        <select id="edit_id_teknisi" name="id_teknisi"
-                            class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                            <option value="">-- Pilih Teknisi --</option>
-                            <?php foreach ($teknisi_options as $teknisi): ?>
-                                <option value="<?= htmlspecialchars($teknisi['usersId']) ?>"
-                                    :selected="editKolam.id_teknisi == <?= htmlspecialchars($teknisi['usersId']) ?>">
-                                    <?= htmlspecialchars($teknisi['nama']) ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                </div>
+                </div> <!-- End grid -->
 
-                <!-- Kolom teks terpisah -->
+                <!-- Textarea Keterangan -->
                 <div>
                     <label for="edit_keterangan" class="block text-sm font-medium text-gray-700 mb-1">Keterangan</label>
                     <textarea id="edit_keterangan" name="keterangan" rows="3"
-                        class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         x-model="editKolam.keterangan"></textarea>
-
                 </div>
 
-                <!-- Tombol aksi -->
-                <div class="flex justify-end space-x-3 pt-4 border-t border-gray-200">
+                <!-- Tombol aksi (di luar grid dan setelah keterangan) -->
+                <div class="flex justify-end gap-3 pt-4 border-t border-gray-200">
                     <button type="button" @click="showEditModal = false"
-                        class="px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
+                        class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 transition">
                         Batal
                     </button>
                     <button type="submit"
-                        class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400">
+                        class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition">
                         Perbarui
                     </button>
                 </div>
             </form>
+
 
         </div>
     </div>
