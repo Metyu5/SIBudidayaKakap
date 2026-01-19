@@ -1,61 +1,25 @@
 # SIBudidayaKakap 🐟
 
-**SIBudidayaKakap** adalah sistem informasi berbasis web yang dibangun menggunakan **PHP Native**. Aplikasi ini dirancang untuk memudahkan manajemen dan pendataan dalam budidaya ikan kakap secara efisien dan sistematis.
+**SIBudidayaKakap** is a web-based information system built using **Native PHP**. This application is designed to simplify management and data recording for snapper fish cultivation in an efficient and systematic manner.
 
-## 🚀 Fitur Utama
+## 🚀 Key Features
 
-- **Manajemen Data**: Pencatatan data budidaya (input, edit, hapus).
-- **Sistem Login**: Autentikasi pengguna untuk keamanan data.
-- **Monitoring**: Dashboard sederhana untuk melihat status budidaya.
-- **Laporan**: Rekapitulasi data budidaya dalam format tabel/cetak.
+- **Data Management**: Recording cultivation data (Create, Read, Update, Delete).
+- **Login System**: User authentication for data security.
+- **Monitoring**: A simple dashboard to view the status of the cultivation process.
+- **Reporting**: Data recapitulation in table or print-ready formats.
 
-## 🛠️ Teknologi yang Digunakan
+## 🛠️ Tech Stack
 
-- **Bahasa Pemrograman**: PHP (Native)
+- **Programming Language**: PHP (Native)
 - **Database**: MySQL
-- **Frontend**: HTML, CSS, JavaScript (Bootstrap/UI Framework terkait)
-- **Server**: Apache (XAMPP/Laragon)
+- **Frontend**: HTML, CSS, JavaScript (Bootstrap or related UI frameworks)
+- **Server**: Apache (XAMPP / Laragon)
 
-## 💻 Cara Instalasi & Menjalankan
+## 💻 Installation & Usage
 
-Ikuti langkah-langkah ini untuk menjalankan proyek di komputer lokal (localhost):
+Follow these steps to run the project on your local machine (localhost):
 
-1. **Clone Repositori**
+1. **Clone the Repository**
    ```bash
    git clone [https://github.com/Metyu5/SIBudidayaKakap.git](https://github.com/Metyu5/SIBudidayaKakap.git)
-Persiapkan Database
-
-Buka phpMyAdmin (biasanya di http://localhost/phpmyadmin).
-
-Buat database baru dengan nama (misal: db_kakap).
-
-Import file .sql yang ada di dalam folder proyek (jika tersedia) atau folder database/.
-
-Konfigurasi Koneksi Database
-
-Buka file koneksi database (biasanya bernama koneksi.php, config.php, atau di folder config/).
-
-Sesuaikan username, password, dan database_name dengan pengaturan MySQL Anda.
-
-PHP
-
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db   = "nama_database_anda";
-Pindahkan Proyek
-
-Pastikan folder proyek berada di dalam direktori htdocs (XAMPP) atau www (WampServer).
-
-Akses di Browser
-
-Buka browser dan ketik: http://localhost/SIBudidayaKakap
-
-📂 Struktur Proyek
-index.php - Halaman utama / Login.
-
-koneksi.php - Pengaturan koneksi ke database.
-
-assets/ - Folder untuk file CSS, JS, dan gambar.
-
-modul/ atau pages/ - Folder berisi file logika fitur aplikasi.
